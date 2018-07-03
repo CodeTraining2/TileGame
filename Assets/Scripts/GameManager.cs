@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour 
 {
-	public WorldManager worldManager;
+	[SerializeField] private WorldManager _worldManager;
 
     public void Start()
     {
-        worldManager.BuildWorld();
+        _worldManager.BuildWorld();
     }
 }

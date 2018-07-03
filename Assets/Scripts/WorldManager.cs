@@ -15,21 +15,23 @@ public class WorldManager : MonoBehaviour
 
     public void BuildWorld()
     {
-        BuildTile();
-    }
-
-	public void BuildTile () //Vector2 position -> what was this for again?
-    {
+        Vector2 positionIndexer = _initialPosition;
         for (int y = 0; y < _rows; y++)
         {
             for (int x = 0; x < _columns; x++)
             {
-                Instantiate(tilePrefab, _initialPosition, Quaternion.identity);
-                _initialPosition.x += _tileOffset.x;
+                BuildTile(positionIndexer);
+
+                positionIndexer.x += _tileOffset.x;
             }
-            _initialPosition.y += _tileOffset.y;
-            _initialPosition.x = 0;
+            positionIndexer.y += _tileOffset.y;
+            positionIndexer.x = 0;
         }
-	}
+    }
+
+	public void BuildTile (Vector2 instantiatePosition) //Vector2 position -> what was this for again?
+    {
+        Instantiate(tilePrefab, instantiatePosition, Quaternion.identity);
+    }
 
 }
