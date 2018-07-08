@@ -12,8 +12,23 @@ public class WorldManager : MonoBehaviour
 	[SerializeField] private Vector2 _tileOffset;
 	[SerializeField] private Vector2 _initialPosition;
 
+    public Map Map;
+
 
     public void BuildWorld()
+    {
+        Map = new Map();
+        PopulateMap();
+    }
+
+	public void BuildTile (Vector2 instantiatePosition) //Vector2 position -> what was this for again?
+    {
+
+        // What is meant by "Add x and y parameters to BuildTile()"
+        Instantiate(tilePrefab, instantiatePosition, Quaternion.identity);
+    }
+
+    public void PopulateMap()
     {
         Vector2 positionIndexer = _initialPosition;
         for (int y = 0; y < _rows; y++)
@@ -29,9 +44,14 @@ public class WorldManager : MonoBehaviour
         }
     }
 
-	public void BuildTile (Vector2 instantiatePosition) //Vector2 position -> what was this for again?
+    public void AddNode(int x, int y)
     {
-        Instantiate(tilePrefab, instantiatePosition, Quaternion.identity);
+        var node = new Node(x, y);
+        Map.AddNode(node);
     }
 
 }
+
+
+// I can't add a textmesh because it conflicts with the meshfilter, which if removed makes the whole thing invisible
+
