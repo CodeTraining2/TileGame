@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WorldManager : MonoBehaviour 
 {
-    [SerializeField] GameObject tilePrefab;
+    [SerializeField] Tile tilePrefab;
 
 	[SerializeField] private int _rows;
 	[SerializeField] private int _columns;
@@ -21,13 +21,6 @@ public class WorldManager : MonoBehaviour
         PopulateMap();
     }
 
-	public void BuildTile (Vector2 instantiatePosition) //Vector2 position -> what was this for again?
-    {
-
-        // What is meant by "Add x and y parameters to BuildTile()"
-        Instantiate(tilePrefab, instantiatePosition, Quaternion.identity);
-    }
-
     public void PopulateMap()
     {
         Vector2 positionIndexer = _initialPosition;
@@ -35,7 +28,9 @@ public class WorldManager : MonoBehaviour
         {
             for (int x = 0; x < _columns; x++)
             {
-                BuildTile(positionIndexer);
+                Coordinates newCoordinates = new Coordinates(x, y);
+
+                BuildTile(positionIndexer, newCoordinates);
 
                 positionIndexer.x += _tileOffset.x;
             }
@@ -44,14 +39,19 @@ public class WorldManager : MonoBehaviour
         }
     }
 
-    public void AddNode(int x, int y)
+	public void BuildTile (Vector2 instantiatePosition, Coordinates newCoordinates)
     {
-        var node = new Node(x, y);
-        Map.AddNode(node);
+        Tile tile = Instantiate(tilePrefab, instantiatePosition, Quaternion.identity);
+        tile.TextMesh.text = "[" + newCoordinates.X + "," + newCoordinates.Y + "]";
+        AddNodeToMap(tile, newCoordinates);
+    }
+
+    public void AddNodeToMap(Tile tile, Coordinates newNodeCoordinates)
+    {
+        var node = new Node(newNodeCoordinates);
+        Map.AddNode(tile);
     }
 
 }
 
-
-// I can't add a textmesh because it conflicts with the meshfilter, which if removed makes the whole thing invisible
 

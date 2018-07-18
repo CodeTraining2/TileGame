@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Node
 {
-    private readonly int _x;
-    private readonly int _y;
-    //What means Make an constructor, passing x and y as parameters
+    private readonly Coordinates _coordinates;
 
     public int X
     {
-        get { return _x; }
+        get { return _coordinates.X; }
     }
 
     public int Y
     {
-        get { return _y; }
+        get { return _coordinates.Y; }
+    }
+
+    public Node(Coordinates coordinates)
+    {
+        _coordinates = coordinates;
     }
 }
