@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour 
 {
 	[SerializeField] private WorldManager _worldManager;
+    [SerializeField] private CardManager _cardManager;
 
     public void Start()
     {
         _worldManager.BuildWorld();
+        _cardManager.SpawnPlayer(_worldManager.Map);
     }
 }

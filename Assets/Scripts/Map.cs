@@ -23,7 +23,7 @@ public class Map
         { CardinalDirection.West, new Coordinates(-1, 0) }
     };
 
-    public Tile GetNodeByCoordinates(int x, int y)
+    public Tile GetTileByCoordinates(int x, int y)
     {
         foreach (Tile tile in _map)
         {
@@ -44,7 +44,7 @@ public class Map
         {
             int neighbourX = tile.X + direction.X;
             int neighbourY = tile.Y + direction.Y;
-            Tile neighbour = GetNodeByCoordinates(neighbourX, neighbourY);
+            Tile neighbour = GetTileByCoordinates(neighbourX, neighbourY);
 
             if (neighbour != null)
             {
