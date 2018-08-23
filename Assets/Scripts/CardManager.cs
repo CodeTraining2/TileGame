@@ -17,6 +17,9 @@ public class CardManager : MonoBehaviour
 
     private void SetupPlayer(Tile tile)
     {
+        _player.CurrentTile = tile;
         _player.transform.position = tile.transform.position;
+
+        tile.Card = _player;
     }
 }

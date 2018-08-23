@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 800950246}
   - component: {fileID: 800950245}
   - component: {fileID: 800950244}
+  - component: {fileID: 800950247}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _worldManager: {fileID: 800950244}
+  _cardManager: {fileID: 800950247}
 --- !u!4 &800950246
 Transform:
   m_ObjectHideFlags: 0
@@ -172,6 +174,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &800950247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 800950243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b93c86f86024c447a105c787b6a516f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerSpawnX: 3
+  _playerSpawnY: 4
+  _playerPrefab: {fileID: 114584862139431680, guid: 225fd93ad4770eb4ba5468f80811a544,
+    type: 2}
 --- !u!1 &2012747545
 GameObject:
   m_ObjectHideFlags: 0

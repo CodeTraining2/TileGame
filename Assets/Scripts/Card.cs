@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    protected Tile CurrentTile;
+    public Tile CurrentTile;
 
     protected void ChangeTile(Tile tile)
     {

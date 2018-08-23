@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour {
     public TextMesh TextMesh;
     public Node Node;
+    public Card Card;
     
 
     public int X
