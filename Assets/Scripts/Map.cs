@@ -15,7 +15,7 @@ public class Map
     List<Tile> _map = new List<Tile>();
 
 
-    private static Dictionary<CardinalDirection, Coordinates> _directions = new Dictionary<CardinalDirection, Coordinates>()
+    public static Dictionary<CardinalDirection, Coordinates> Directions = new Dictionary<CardinalDirection, Coordinates>()
     {
         { CardinalDirection.North, new Coordinates(0, 1) },
         { CardinalDirection.East, new Coordinates(1, 0) },
@@ -36,24 +36,25 @@ public class Map
         return null;
     }
 
-    public List<Tile> GetNeighbours(Tile tile)
+    public Dictionary<CardinalDirection, Tile> GetNeighbors(Tile tile)
     {
-        List<Tile> neighbours = new List<Tile>();
+        Dictionary<CardinalDirection, Tile> neighborsCollection = new Dictionary<CardinalDirection, Tile>();
 
-        foreach (var direction in _directions.Values)
+        foreach (var direction in Directions)
         {
-            int neighbourX = tile.X + direction.X;
-            int neighbourY = tile.Y + direction.Y;
-            Tile neighbour = GetTileByCoordinates(neighbourX, neighbourY);
+            int targetX = direction.Value.X + tile.Node.X;
+            int targetY = direction.Value.Y + tile.Node.Y;
+            var targetCoordinates = new Coordinates(targetX, targetY);
+            Tile neighbor = GetTileByCoordinates(targetCoordinates); //I don't get why this doesn't work, as targetCoordinates still contains x and y?
 
-            if (neighbour != null)
+            if (neighbor != null)
             {
-                neighbours.Add(neighbour);
-                Debug.Log("Neighbour " + neighbour.X + " " + neighbour.Y + " Has been added");
+                neighborsCollection.Add(direction.Key neighbor); //This should be fixed by the above
+                Debug.Log("Neighbor " + neighbor.X + " " + neighbor.Y + " Has been added");
             }
         }
 
-        return neighbours;
+        return neighborsCollection;
     }
 
     public void AddNode(Tile tile)

@@ -8,6 +8,16 @@ public class Card : MonoBehaviour
 
     protected void ChangeTile(Tile tile)
     {
+        /* Change the CurrentTile and transform.position of the Card, what am I doing
+       
+        Card.CurrentTile
+        Card.transform.position = ;
+
+        */
+    }
+
+    protected void ResetTile()
+    {
 
     }
 }

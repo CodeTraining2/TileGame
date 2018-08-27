@@ -6,6 +6,7 @@ public class Tile : MonoBehaviour {
     public TextMesh TextMesh;
     public Node Node;
     public Card Card;
+    public Card CurrentCard;
     
 
     public int X

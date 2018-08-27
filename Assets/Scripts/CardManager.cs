@@ -13,13 +13,15 @@ public class CardManager : MonoBehaviour
     {
         _player = Instantiate(_playerPrefab);
         Tile tile = map.GetTileByCoordinates(_playerSpawnX, _playerSpawnY);
+        SetupPlayer(tile);
     }
 
     private void SetupPlayer(Tile tile)
     {
+
         _player.CurrentTile = tile;
         _player.transform.position = tile.transform.position;
 
-        tile.Card = _player;
+        tile.CurrentCard = _player;
     }
 }
