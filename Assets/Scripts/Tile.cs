@@ -7,6 +7,7 @@ public class Tile : MonoBehaviour {
     public Node Node;
     public Card Card;
     public Card CurrentCard;
+    public Map Map;
     
 
     public int X

@@ -43,6 +43,7 @@ public class WorldManager : MonoBehaviour
     {
         Tile tile = Instantiate(tilePrefab, instantiatePosition, Quaternion.identity);
         tile.TextMesh.text = "[" + newCoordinates.X + "," + newCoordinates.Y + "]";
+        tile.Map = Map;
         AddNodeToMap(tile, newCoordinates);
         tile.Node = new Node(newCoordinates);
         

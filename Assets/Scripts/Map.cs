@@ -45,11 +45,11 @@ public class Map
             int targetX = direction.Value.X + tile.Node.X;
             int targetY = direction.Value.Y + tile.Node.Y;
             var targetCoordinates = new Coordinates(targetX, targetY);
-            Tile neighbor = GetTileByCoordinates(targetCoordinates); //I don't get why this doesn't work, as targetCoordinates still contains x and y?
+            Tile neighbor = GetTileByCoordinates(targetCoordinates.X, targetCoordinates.Y); //I don't get why this doesn't work, as targetCoordinates still contains x and y?
 
             if (neighbor != null)
             {
-                neighborsCollection.Add(direction.Key neighbor); //This should be fixed by the above
+                neighborsCollection.Add(direction.Key, neighbor);
                 Debug.Log("Neighbor " + neighbor.X + " " + neighbor.Y + " Has been added");
             }
         }

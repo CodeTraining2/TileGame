@@ -26,7 +26,7 @@ public class Player : Actor
             if (Input.GetKeyDown(keyBinding.Value))
             {
                 CardinalDirection direction = keyBinding.Key;
-                Tile neighboringTile = CurrentTile.Map.GetNeighbors(CurrentTile)[direction]; //This should be fixed if I manage to fix the Card class
+                Tile neighboringTile = CurrentTile.Map.GetNeighbors(CurrentTile)[direction]; 
 
                 if (neighboringTile)
                 {
