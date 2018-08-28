@@ -21,7 +21,7 @@ public class Player : Actor
 
     public void ReadInput()
     {
-        foreach(var keyBinding in DirectionKeyBindings) //where does keyBinding come from?
+        foreach(var keyBinding in DirectionKeyBindings) //where does keyBinding come from? - it's a static 
         {
             if (Input.GetKeyDown(keyBinding.Value))
             {
