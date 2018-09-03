@@ -30,7 +30,7 @@ public class Player : Actor
 
                 if (neighboringTile)
                 {
-                    ChangeTile(neighboringTile);
+                    Interact(neighboringTile);
                 }
             }
         }
