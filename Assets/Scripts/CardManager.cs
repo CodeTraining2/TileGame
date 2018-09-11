@@ -7,7 +7,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] private int _playerSpawnX;
     [SerializeField] private int _playerSpawnY;
     [SerializeField] private Player _playerPrefab;
-    [SerializeField] private int _initialPlayerPotency;
+    [SerializeField] private int _initialPlayerPotency = 10;
     private Player _player;
 
     public void SpawnPlayer(Map map)
@@ -19,7 +19,7 @@ public class CardManager : MonoBehaviour
 
     private void SetupPlayer(Tile tile)
     {
-        _initialPlayerPotency = 10; //was this meant with setting the potency in here? 5.b
+        _player.Potency = _initialPlayerPotency;
         _player.CurrentTile = tile;
         _player.transform.position = tile.transform.position;
 

@@ -42,8 +42,8 @@ public class Map
 
         foreach (var direction in Directions)
         {
-            int targetX = direction.Value.X + tile.Node.X;
-            int targetY = direction.Value.Y + tile.Node.Y;
+            int targetX = direction.Value.X + tile.Coordinates.X;
+            int targetY = direction.Value.Y + tile.Coordinates.Y;
             var targetCoordinates = new Coordinates(targetX, targetY);
             Tile neighbor = GetTileByCoordinates(targetCoordinates.X, targetCoordinates.Y); //I don't get why this doesn't work, as targetCoordinates still contains x and y?
 
@@ -57,7 +57,7 @@ public class Map
         return neighborsCollection;
     }
 
-    public void AddNode(Tile tile)
+    public void AddTile(Tile tile)
     {
         _map.Add(tile);
     }

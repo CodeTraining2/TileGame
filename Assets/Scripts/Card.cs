@@ -2,50 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public abstract class Card : MonoBehaviour
 {
-    public Tile CurrentTile;
-    private Card _currentCard; //I did not have CurrentCard in here, which you wanted me to make private (did you mean current tile?) 4.a
-   [SerializeField] private int Potency;
+    private Tile _currentTile;
+   [SerializeField] public int Potency;
 
-    private void ChangeTile(Tile targetTile)
-    {
-        CurrentTile = targetTile;
-        transform.position = targetTile.transform.position;
-    }
+
 
     protected void ResetTile()
     {
 
     }
 
-    public int CurrentCard
+    public Tile CurrentTile
     {
         get
         {
-            return _currentCard;
+            return _currentTile;
         }
         set
         {
-            _currentCard = value; //what? 4.b
-            _currentCard.CurrentTile = CurrentTile; //??? 4.b
+            _currentTile = value;
+            if (value.CurrentCard != null)
+            {
+                _currentTile.CurrentCard = this;
+            }
         }
     }
 
-    public void Interact(Tile tile)
+    public abstract void Setup();
+
+    public void Interact(Tile targetTile)
     {
-        if (CurrentTile.Card != null)
+        if (targetTile.CurrentCard != null)
         {
-            Card.Potency += _currentCard.Potency; //4.e
+            Potency += targetTile.CurrentCard.Potency;
             DestroyCard();
         }
-        ChangeTile();
-        CurrentTile.Card = null;
+        ChangeTile(targetTile);
+    }
+
+    private void ChangeTile(Tile targetTile)
+    {
+        _currentTile = targetTile;
+        transform.position = targetTile.transform.position;
+        _currentTile.CurrentCard = null;
     }
 
     private void DestroyCard()
     {
-        Card.CurrentTile = null;
         Destroy(gameObject);
     }
 }

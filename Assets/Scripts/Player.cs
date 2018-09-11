@@ -19,9 +19,13 @@ public class Player : Actor
         ReadInput();
     }
 
+    public override void Setup()
+    {
+        Potency = initialPotency;
+    }
     public void ReadInput()
     {
-        foreach(var keyBinding in DirectionKeyBindings) //where does keyBinding come from? - it's a static 
+        foreach(var keyBinding in DirectionKeyBindings) 
         {
             if (Input.GetKeyDown(keyBinding.Value))
             {
