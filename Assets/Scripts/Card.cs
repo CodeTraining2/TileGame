@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Card : MonoBehaviour
 {
     private Tile _currentTile;
-   [SerializeField] public int Potency;
+    public int Potency;
 
 
 

@@ -13,7 +13,8 @@ public class WorldManager : MonoBehaviour
 	[SerializeField] private Vector2 _initialPosition;
 
     public Map Map;
-
+    private GameObject _thingPrefab;
+    [Range(0,1)] [SerializeField] private float _thingSpawnPropability;
 
     public void BuildWorld()
     {
@@ -33,6 +34,7 @@ public class WorldManager : MonoBehaviour
                 BuildTile(positionIndexer, newCoordinates);
 
                 positionIndexer.x += _tileOffset.x;
+                populateTile(); // 4. b. v.
             }
             positionIndexer.y += _tileOffset.y;
             positionIndexer.x = 0;
@@ -46,6 +48,17 @@ public class WorldManager : MonoBehaviour
         tile.Map = Map;
         tile.Coordinates = newCoordinates;
         
+    }
+
+    private void populateTile(Coordinates coordinates)
+    {
+        if (coordinates == _initialPosition)
+        {
+            if (/*what random number? 4. b. ii.*/ >= _thingSpawnPropability)
+            {
+                CardManager.SpawnCard(Map map, Coordinates coordinates, isPlayer = truefalse);
+            }
+        }
     }
 }
 

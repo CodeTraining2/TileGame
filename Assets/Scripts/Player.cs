@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : Actor
 {
-    
+    public int initialPotency; //It did not have this so I added it 
+
     private static readonly Dictionary<CardinalDirection, KeyCode> DirectionKeyBindings = 
         new Dictionary<CardinalDirection, KeyCode>()
     {
