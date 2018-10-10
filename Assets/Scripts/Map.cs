@@ -23,11 +23,11 @@ public class Map
         { CardinalDirection.West, new Coordinates(-1, 0) }
     };
 
-    public Tile GetTileByCoordinates(int x, int y)
+    public Tile GetTileByCoordinates(Coordinates coordinates)
     {
         foreach (Tile tile in _map)
         {
-            if (tile.X == x && tile.Y == y)
+            if (tile.Coordinates.X == coordinates.X && tile.Coordinates.Y == coordinates.Y)
             {
                 return tile;
             }

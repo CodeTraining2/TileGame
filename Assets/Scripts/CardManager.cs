@@ -4,43 +4,31 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    [SerializeField] private int _playerSpawnX;
-    [SerializeField] private int _playerSpawnY;
     [SerializeField] private Player _playerPrefab;
-    [SerializeField] private int _initialPlayerPotency = 10;
-    [SerializeField] private bool isPlayer;
+    [SerializeField] private Thing _thingPrefab;
 
-    public void SpawnPlayer(Map map)
-    {
-
-        Tile tile = map.GetTileByCoordinates(_playerSpawnX, _playerSpawnY);
-        SetupPlayer(tile);
-    }
-
-    private void SetupCard(Card card, Map map, int x, int y)
-    {
-        _player.CurrentTile = tile;
-        _player.transform.position = tile.transform.position;
-        _player = Instantiate(_playerPrefab); // 3. c. iii.
-        tile.CurrentCard = _player;
-    }
-
-    public void SpawnCard(Map map, Coordinates coordinates,bool isPlayer)
+    public void SpawnCard(Map map, Coordinates spawnCoordinates, bool isPlayer = false)
     {
         Card prefab;
-        if(isPlayer == true)
+        if (isPlayer)
         {
-            prefab = _thingPrefab;
-            Instantiate(Thing, /*SomePosition*/); <-------------------3. d. iii.
+            prefab = _playerPrefab;
         }
         else
         {
-            prefab = _playerPrefab;
-            Instantiate(Player, /*SomePosition*/); <-------------------3. d. iii.
+            prefab = _thingPrefab;
         }
 
-        SetupCard(Card prefab, Map map,)
+        var card = Instantiate(prefab);
+        SetupCard(card, map, spawnCoordinates);
+    }
 
+    public void SetupCard(Card card, Map map, Coordinates spawnCoordinates)
+    {
+        Tile spawnTile = map.GetTileByCoordinates(spawnCoordinates);
+        card.CurrentTile = spawnTile;
+        card.transform.position = spawnTile.transform.position;
+        card.Setup();
     }
 }
 
