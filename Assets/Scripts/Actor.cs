@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Actor : Card
 {
+    public override void Setup()
+    {
 
+    }
 }

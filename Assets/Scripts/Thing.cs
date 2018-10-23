@@ -11,4 +11,9 @@ public class Thing : Card
     {
         Potency = Random.Range(minPotency, maxPotency);
     }
+
+    public override void Setup()
+    {
+
+    }
 }

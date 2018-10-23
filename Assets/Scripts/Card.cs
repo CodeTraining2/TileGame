@@ -22,11 +22,12 @@ public abstract class Card : MonoBehaviour
         }
         set
         {
-            _currentTile = value;
-            if (value.CurrentCard != null)
+            if (_currentTile != null)
             {
-                _currentTile.CurrentCard = this;
+                _currentTile.CurrentCard = null;
             }
+            _currentTile = value;
+            value.CurrentCard = this;
         }
     }
 

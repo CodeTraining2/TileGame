@@ -10,6 +10,6 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         _worldManager.BuildWorld();
-        _cardManager.SpawnPlayer(_worldManager.Map);
+        
     }
 }

@@ -148,6 +148,10 @@ MonoBehaviour:
   _columns: 5
   _tileOffset: {x: 1.1, y: 1.1}
   _initialPosition: {x: 0, y: 0}
+  _cardManager: {fileID: 800950247}
+  _playerInitialX: 0
+  _playerInitialY: 0
+  _thingSpawnPropability: 1
 --- !u!114 &800950245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,9 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b93c86f86024c447a105c787b6a516f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpawnX: 2
-  _playerSpawnY: 2
   _playerPrefab: {fileID: 114584862139431680, guid: 225fd93ad4770eb4ba5468f80811a544,
+    type: 2}
+  _thingPrefab: {fileID: 114137287035472494, guid: 7329c8f57f8521c4ab1a582498d61677,
     type: 2}
 --- !u!1 &2012747545
 GameObject:
